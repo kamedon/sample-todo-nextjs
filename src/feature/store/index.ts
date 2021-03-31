@@ -1,5 +1,3 @@
-import * as Todo from './todo'
+import * as Todo from './todo';
 
-export {
-    Todo
-}
+export {Todo};

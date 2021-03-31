@@ -1,6 +1,4 @@
-import * as Common from './common'
-import * as Todo from './todo'
+import * as Common from './common';
+import * as Todo from './todo';
 
-export {
-    Common, Todo
-}
+export {Common, Todo};

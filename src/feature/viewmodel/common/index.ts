@@ -1,3 +1,3 @@
-import {useLoadingViewModel} from './loading'
+import {useLoadingViewModel} from './loading';
 
-export {useLoadingViewModel}
+export {useLoadingViewModel};

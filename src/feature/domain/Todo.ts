@@ -1,7 +1,5 @@
 export type Todo = {
-    title: string
-    status: TodoState
-}
-export type TodoState = 'issue' | 'wip' | 'done'
-
-
+  title: string;
+  status: TodoState;
+};
+export type TodoState = 'issue' | 'wip' | 'done';
