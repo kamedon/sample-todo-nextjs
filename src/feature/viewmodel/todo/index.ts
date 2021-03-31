@@ -1,3 +1,3 @@
-import {useTodoViewModel} from './presenter';
+import {useTodoViewModel} from './viewmodel';
 
 export {useTodoViewModel};
