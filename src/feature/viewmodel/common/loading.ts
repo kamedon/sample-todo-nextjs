@@ -1,6 +1,6 @@
 import {useCallback, useState} from "react";
 
-export const useLoadingPresenter = () => {
+export const useLoadingViewModel = () => {
     const [loading, setLoading] = useState(false)
     const showLoading = useCallback(() => {
         setLoading(true)

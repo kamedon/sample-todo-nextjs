@@ -1,10 +1,9 @@
 import React, {FC} from 'react'
-import {useTodoPresenter} from "../../feature/presenter/todo";
+import {ViewModel} from "@feature";
 
 const TodoPage: FC = () => {
-    const {state, actions} = useTodoPresenter()
+    const {state, actions} = ViewModel.Todo.useTodoViewModel()
     return <>
-        {state.loading && <div>loading...</div>}
         <div>
             <input value={state.title} onChange={event => {
                 actions.setTitle(event.target.value)
@@ -17,6 +16,7 @@ const TodoPage: FC = () => {
                 {state.todos.map((todo, index) => <li key={index}>{todo.title}</li>)}
             </ul>
         </div>
+        {state.loading && <div>loading...</div>}
 
     </>
 }

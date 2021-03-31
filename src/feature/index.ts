@@ -1,11 +1,11 @@
 import * as Domain from './domain'
 import * as Repository from './repository'
-import * as Presenter from './presenter'
+import * as ViewModel from './viewmodel'
 import * as Store from './store'
 
 export {
     Domain,
     Repository,
-    Presenter,
+    ViewModel,
     Store
 }

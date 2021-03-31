@@ -4,7 +4,7 @@ import {Todo} from "../domain/Todo";
 export const todos: () => Promise<Todo[]> = () => {
     return new Promise((resolve) => {
         setTimeout(() => {
-            const data: Todo[] = []
+            const data: Todo[] = [{title: 'first', status: "issue"}]
             return resolve(data)
         }, 1000)
     })
