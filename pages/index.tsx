@@ -1,4 +1,4 @@
-import Layout from '../components/Layout'
+import Layout from '../src/components/template/Layout'
 import TodoPage from "../src/components/page/TodoPage";
 import {NextPage} from "next";
 
