@@ -1,9 +1,11 @@
 import {Domain} from "@feature";
+import {Todo} from "../domain/Todo";
 
-export const todos = async () => {
-    return await new Promise((resolve) => {
+export const todos: () => Promise<Todo[]> = () => {
+    return new Promise((resolve) => {
         setTimeout(() => {
-            return resolve([])
+            const data: Todo[] = []
+            return resolve(data)
         }, 1000)
     })
 }

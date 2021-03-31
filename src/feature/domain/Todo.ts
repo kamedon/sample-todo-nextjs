@@ -1,4 +1,7 @@
 export type Todo = {
     title: string
-    status: string
+    status: TodoState
 }
+export type TodoState = 'issue' | 'wip' | 'done'
+
+
