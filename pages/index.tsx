@@ -1,10 +1,10 @@
 import Layout from '../src/components/template/Layout';
-import TodoPage from '../src/components/page/TodoPage';
+import TodosPage from '../src/components/page/todos/TodosPage';
 import {NextPage} from 'next';
 
 const IndexPage: NextPage = () => (
   <Layout title="Home | Next.js + TypeScript Example">
-    <TodoPage />
+    <TodosPage />
   </Layout>
 );
 

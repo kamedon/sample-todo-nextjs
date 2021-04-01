@@ -1,6 +1,6 @@
 import {Repository} from '@feature';
 
-export const useTodoUseCase = () => {
+export const useTodosUseCase = () => {
   const todos = Repository.Todo.todos;
   const postTodo = Repository.Todo.postTodo;
   return {

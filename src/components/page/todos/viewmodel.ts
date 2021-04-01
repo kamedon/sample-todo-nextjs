@@ -1,15 +1,15 @@
 import {useCallback, useEffect, useState} from 'react';
-import {useTodoUseCase} from './usecase';
+import {useTodosUseCase} from './usecase';
 import {Domain, Store, ViewModel} from '@feature';
 import {useRecoilState} from 'recoil';
 
-export const useTodoViewModel = () => {
-  const useCase = useTodoUseCase();
+export const useTodosViewModel = () => {
+  const useCase = useTodosUseCase();
   const {
     showLoading,
     loading,
     hideLoading,
-  } = ViewModel.Common.useLoadingViewModel();
+  } = ViewModel.Loading.useLoadingViewModel();
 
   const [title, setTitle] = useState('');
   const [todos, setTodos] = useRecoilState(Store.Todo.todos);

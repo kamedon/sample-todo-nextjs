@@ -1,4 +1,3 @@
-import * as Common from './common';
-import * as Todo from './todo';
+import * as Loading from './loading';
 
-export {Common, Todo};
+export {Loading};

@@ -1,8 +1,8 @@
 import React, {FC} from 'react';
-import {ViewModel} from '@feature';
+import {useTodosViewModel} from './viewmodel';
 
-const TodoPage: FC = () => {
-  const {state, actions} = ViewModel.Todo.useTodoViewModel();
+const TodosPage: FC = () => {
+  const {state, actions} = useTodosViewModel();
   return (
     <>
       <div>
@@ -27,4 +27,4 @@ const TodoPage: FC = () => {
   );
 };
 
-export default TodoPage;
+export default TodosPage;
