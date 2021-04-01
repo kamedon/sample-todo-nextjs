@@ -1,10 +1,8 @@
 import {useCallback, useEffect, useState} from 'react';
-import {useTodosUseCase} from './usecase';
-import {Domain, Store, ViewModel} from '@feature';
+import {Domain, Store, UseCase, ViewModel} from '@feature';
 import {useRecoilState} from 'recoil';
 
 export const useTodosViewModel = () => {
-  const useCase = useTodosUseCase();
   const {
     showLoading,
     loading,
@@ -16,8 +14,7 @@ export const useTodosViewModel = () => {
 
   useEffect(() => {
     showLoading();
-    useCase
-      .todos()
+    UseCase.Todo.todos()
       .then(res => {
         setTodos(res);
       })
@@ -30,8 +27,7 @@ export const useTodosViewModel = () => {
       status: 'issue',
     };
     showLoading();
-    useCase
-      .postTodo(todo)
+    UseCase.Todo.post(todo)
       .then(() => {
         setTodos([...todos, todo]);
         setTitle('');
