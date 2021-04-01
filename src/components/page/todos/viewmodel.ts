@@ -1,16 +1,22 @@
-import {useCallback, useEffect, useState} from 'react';
+import {useCallback, useEffect} from 'react';
 import {Domain, Store, UseCase, ViewModel} from '@feature';
 import {useRecoilState} from 'recoil';
 
 export const useTodosViewModel = () => {
+  const [todos, setTodos] = useRecoilState(Store.Todo.todos);
+
   const {
-    showLoading,
     loading,
+    showLoading,
     hideLoading,
   } = ViewModel.Loading.useLoadingViewModel();
 
-  const [title, setTitle] = useState('');
-  const [todos, setTodos] = useRecoilState(Store.Todo.todos);
+  const {error, showError, hideError} = ViewModel.Error.useErrorViewModel();
+
+  const {
+    state: {title},
+    actions: {setTitle, validate},
+  } = ViewModel.TodoForm.useTodoFormViewModel();
 
   useEffect(() => {
     showLoading();
@@ -18,10 +24,19 @@ export const useTodosViewModel = () => {
       .then(res => {
         setTodos(res);
       })
+      .catch(e => {
+        showError(e);
+      })
       .finally(hideLoading);
   }, []);
 
   const postTodo = useCallback(() => {
+    const {valid, message} = validate();
+    if (!valid) {
+      showError(new Error(message));
+      return;
+    }
+    hideError();
     const todo: Domain.Todo.Todo = {
       title,
       status: 'issue',
@@ -32,12 +47,16 @@ export const useTodosViewModel = () => {
         setTodos([...todos, todo]);
         setTitle('');
       })
+      .catch(e => {
+        showError(e);
+      })
       .finally(hideLoading);
   }, [title, todos]);
 
   return {
     state: {
       loading,
+      error,
       todos,
       title,
     },
