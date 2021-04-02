@@ -1,12 +1,13 @@
 import {AppProps} from 'next/app';
-import {RecoilRoot} from 'recoil';
+import {Provider} from 'react-redux';
+import {Store} from '@feature';
 
 const App = ({Component, pageProps}: AppProps) => {
-  return (
-    <RecoilRoot>
-      <Component {...pageProps} />
-    </RecoilRoot>
-  );
+    return (
+        <Provider store={Store.myAppStore}>
+            <Component {...pageProps} />
+        </Provider>
+    );
 };
 
 export default App;

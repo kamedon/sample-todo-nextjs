@@ -1,17 +1,17 @@
 import {useCallback, useEffect} from 'react';
-import {Domain, Store, UseCase, ViewModel} from '@feature';
-import {useRecoilState} from 'recoil';
+import {Domain, Module, UseCase, ViewModel} from '@feature';
+import {useDispatch, useSelector} from 'react-redux';
 
 export const useTodosViewModel = () => {
-  const [todos, setTodos] = useRecoilState(Store.Todo.todos);
-
+  const {todos, error, loading} = useSelector(
+    (state: Module.AppState) => state
+  );
+  const dispatch = useDispatch();
   const {
-    loading,
-    showLoading,
-    hideLoading,
-  } = ViewModel.Loading.useLoadingViewModel();
-
-  const {error, showError, hideError} = ViewModel.Error.useErrorViewModel();
+    error: formError,
+    showError,
+    hideError,
+  } = ViewModel.Error.useErrorViewModel();
 
   const {
     state: {title},
@@ -19,15 +19,7 @@ export const useTodosViewModel = () => {
   } = ViewModel.TodoForm.useTodoFormViewModel();
 
   useEffect(() => {
-    showLoading();
-    UseCase.Todo.todos()
-      .then(res => {
-        setTodos(res);
-      })
-      .catch(e => {
-        showError(e);
-      })
-      .finally(hideLoading);
+    dispatch(UseCase.Todo.todos());
   }, []);
 
   const postTodo = useCallback(() => {
@@ -41,22 +33,14 @@ export const useTodosViewModel = () => {
       title,
       status: 'issue',
     };
-    showLoading();
-    UseCase.Todo.post(todo)
-      .then(() => {
-        setTodos([...todos, todo]);
-        setTitle('');
-      })
-      .catch(e => {
-        showError(e);
-      })
-      .finally(hideLoading);
+    dispatch(UseCase.Todo.post(todo));
+    setTitle('');
   }, [title, todos]);
 
   return {
     state: {
       loading,
-      error,
+      error: formError ?? error,
       todos,
       title,
     },
