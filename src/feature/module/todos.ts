@@ -32,11 +32,9 @@ export function addTodo(todo: Todo) {
   };
 }
 
-type GetAction = ReturnType<typeof getTodos>;
-type SetAction = ReturnType<typeof setTodos>;
-type AddAction = ReturnType<typeof addTodo>;
-
-export type Actions = GetAction | SetAction | AddAction;
+export type Actions = ReturnType<
+  typeof getTodos | typeof setTodos | typeof addTodo
+>;
 
 export function reducer(state = createInitialState(), action: Actions) {
   switch (action.type) {
