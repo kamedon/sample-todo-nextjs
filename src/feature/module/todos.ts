@@ -1,6 +1,6 @@
-import {Todo} from '../domain/Todo';
+import {Domain} from '@feature';
 
-export function createInitialState(): Todo[] {
+export function createInitialState(): Domain.Todo.Todo[] {
   return [];
 }
 
@@ -14,7 +14,7 @@ export function getTodos() {
   };
 }
 
-export function setTodos(todos: Todo[]) {
+export function setTodos(todos: Domain.Todo.Todo[]) {
   return {
     type: SET_TODOS,
     payload: {
@@ -23,7 +23,7 @@ export function setTodos(todos: Todo[]) {
   };
 }
 
-export function addTodo(todo: Todo) {
+export function addTodo(todo: Domain.Todo.Todo) {
   return {
     type: ADD_TODO,
     payload: {

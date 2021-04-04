@@ -1,4 +1,4 @@
-import {Todo} from '../../domain/Todo';
+import {Todo} from '../../domain/todo';
 
 function todos() {
   return new Promise<Todo[]>(resolve => {

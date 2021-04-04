@@ -1,3 +1,3 @@
-import * as Todo from './Todo';
+import * as Todo from './todo';
 
 export {Todo};
